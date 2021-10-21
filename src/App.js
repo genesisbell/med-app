@@ -1,7 +1,63 @@
-import React from 'react';
+import React, {
+    useEffect,
+    useMemo,
+    useReducer,
+    useState,
+} from 'react';
+
+//Modules Components
+import Header from './components/Modules/Header';
+
+//Custom Components
+import Graph from './components/CustomComponents/Graph';
+
+//Library Componets
+import Themes from './components/LibraryComponents/Colors';
+
+//Context
+import ThemeReducer from './reducers/ThemeReducer';
+import { ThemeContext } from './components/Context';
 
 export default function App(){
+
+    const [theme, setTheme] = useState(Themes.lightTheme);
+
+    /* Start Theme Management */
+    
+    useEffect(() => {
+        document.body.style = `background-color: ${theme.background};`;
+    }, [theme.background]);
+    
+    const initialThemeState = {
+        theme: Themes.lightTheme,
+        themeString: 'lightTheme',
+    };
+
+    const [themeState, themeDispatch] = useReducer(ThemeReducer, initialThemeState);
+
+    const themeContext = useMemo(() => ({
+        setTheme: async(theme, themeString) => {
+
+            //Save theme to cache
+
+            //Set Theme
+            setTheme(theme);
+            themeDispatch({type: 'CHANGE_THEME', theme: theme, themeString: themeString});
+        }
+    }), []);
+
+    /* End Theme Management */
+
+
+
+
+
     return(
-        <h1>Med App</h1>
+        <ThemeContext.Provider value={{themeContext, theme}}>
+            <div>
+                <Header/>
+                <Graph/>
+            </div>
+        </ThemeContext.Provider>
     )
 }
