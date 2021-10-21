@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/genesisbell/med-app/issues"
   },
-  "homepage": "https://github.com/genesisbell/med-app#readme"
+  "homepage": "https://github.com/genesisbell/med-app#readme",
+  "dependencies": {
+    "@babel/core": "^7.15.8",
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1"
+  }
 }
