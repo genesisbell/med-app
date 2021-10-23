@@ -5,11 +5,13 @@ import React, {
     useState,
 } from 'react';
 
+//Pages
+import BilliPage from './components/PagesComponents/BilliPage';
+
 //Modules Components
 import Header from './components/Modules/Header';
 
-//Custom Components
-import Graph from './components/CustomComponents/Graph';
+
 
 //Library Componets
 import Themes from './components/LibraryComponents/Colors';
@@ -56,7 +58,7 @@ export default function App(){
         <ThemeContext.Provider value={{themeContext, theme}}>
             <div>
                 <Header/>
-                <Graph/>
+                <BilliPage/>
             </div>
         </ThemeContext.Provider>
     )

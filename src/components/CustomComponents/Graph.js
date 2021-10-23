@@ -1,81 +1,56 @@
-import React from 'react';
+import React, {
+    useContext,
+} from 'react';
 import { 
     CartesianGrid,
+    Legend,
     LineChart, 
     Line,
+    ReferenceDot,
+    ResponsiveContainer,
     Tooltip,
     XAxis,
     YAxis,
 } from 'recharts';
 
+//Context
+import {ThemeContext} from '../Context';
 
-export default function Graph(){
+export default function Graph({chart, billiAxis}){
 
+    function handleDotMouseOver(){
+        console.log('hoho')
+        return(
+            <Tooltip coordinate={billiAxis}/>
+        )
+    }
 
-    const charts = [
-        
-        {
-            id: 1,
-            title: '23 Semanas de gestación',
-            data: [
-                {daysFromBirth: 0, pt: 40, et: 80,},
-                {daysFromBirth: 1, pt: 70, et: 130,},
-                {daysFromBirth: 2, pt: 100, et: 180,},
-                {daysFromBirth: 3, pt: 130, et: 230,},
-                {daysFromBirth: 4, pt: 130, et: 230,},
-                {daysFromBirth: 5, pt: 130, et: 230,},
-                {daysFromBirth: 6, pt: 130, et: 230,},
-                {daysFromBirth: 7, pt: 130, et: 230,},
-                {daysFromBirth: 8, pt: 130, et: 230,},
-                {daysFromBirth: 9, pt: 130, et: 230,},
-                {daysFromBirth: 10, pt: 130, et: 230,},
-                {daysFromBirth: 11, pt: 130, et: 230,},
-                {daysFromBirth: 12, pt: 130, et: 230,},
-                {daysFromBirth: 13, pt: 130, et: 230,},
-                {daysFromBirth: 14, pt: 130, et: 230,},
-            ]
-        },        
-        {
-            id: 2,
-            title: '24 Semanas de gestación',
-            data: [
-                {daysFromBirth: 0, pt: 40, et: 80,},
-                {daysFromBirth: 1, pt: 70, et: 130,},
-                {daysFromBirth: 2, pt: 100, et: 180,},
-                {daysFromBirth: 3, pt: 130, et: 230,},
-                {daysFromBirth: 4, pt: 130, et: 230,},
-                {daysFromBirth: 5, pt: 130, et: 230,},
-                {daysFromBirth: 6, pt: 130, et: 230,},
-                {daysFromBirth: 7, pt: 130, et: 230,},
-                {daysFromBirth: 8, pt: 130, et: 230,},
-                {daysFromBirth: 9, pt: 130, et: 230,},
-                {daysFromBirth: 10, pt: 130, et: 230,},
-                {daysFromBirth: 11, pt: 130, et: 230,},
-                {daysFromBirth: 12, pt: 130, et: 230,},
-                {daysFromBirth: 13, pt: 130, et: 230,},
-                {daysFromBirth: 14, pt: 130, et: 230,},
-            ]
-        },
-    ];
-
-    charts.map(chart => (
-        console.log(chart)
-    ))
+    const { theme } = useContext(ThemeContext);
 
     return(
-        charts.map( chart => (
-            <div key={chart.id}>
-                <h3>{chart.title}</h3>
-                <LineChart width={1000} height={400} data={chart.data}>
-                    <Line type="monotone" dataKey="pt" stroke="blue" />
-                    <Line type="monotone" dataKey="et" stroke="red" />
-                    <Line type="monotone" dataKey="br" stroke="purple" />
+        <div style={{ width: '90%', height: 400}}>
+            <h3 style={{textAlign: 'center', color: theme.text}}>{chart.title} de gestación</h3>
+            <ResponsiveContainer>
+                <LineChart 
+                    data={chart.data} 
+                    margin={{
+                        top: 10,
+                        right: 30,
+                        left: 0,
+                        bottom: 0,
+                }}>
+                    <Legend verticalAlign="top" height={36}/>
                     <CartesianGrid stroke="#ccc" strokeDasharray="5 5"/>
-                    <XAxis dataKey="daysFromBirth" />
-                    <YAxis />
+                    <Line name="Fototerapia" type="monotone" dataKey="pt" stroke="blue" />
+                    <Line name="Exanguinotransfusión" type="monotone" dataKey="et" stroke="red" />
+                    <Line name="Bilirubina" stroke="purple" />
+                    <ReferenceDot x={billiAxis.x} y={billiAxis.y} fill="purple" r={5} onMouseOver={handleDotMouseOver}/>
+                    <XAxis dataKey="daysFromBirth" type="number" tickCount={15} interval={0} stroke={theme.textLight}/>
+                    <YAxis allowDataOverflow={true} type="number" tickCount={15} interval={0} stroke={theme.textLight}/>
                     <Tooltip />
+                    
                 </LineChart>
-            </div>
-        ))
+            </ResponsiveContainer>
+        </div>
     );
 }

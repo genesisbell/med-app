@@ -1,3 +1,8 @@
+const sharedColors = {
+    button: '#E74424',
+    buttonText: '#F7F1E6'
+}
+
 const Themes = {
     lightTheme : {
         background: '#ffffff',
@@ -10,6 +15,8 @@ const Themes = {
         text: '#000000',
         text2: '#7D7F81',
         textLight: '#7D7F81',
+
+        ...sharedColors,
     },
 
     darkTheme : {
@@ -23,6 +30,8 @@ const Themes = {
         text: '#DDDDDD',
         text2: '#ABAEB2', 
         textLight: '#7D7F81',
+
+        ...sharedColors,
     },
 }
 
