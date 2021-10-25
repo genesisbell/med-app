@@ -9,6 +9,8 @@ const Themes = {
         background2: '#E5E5E5',
         header: '#2D4059',
         headerText: '#ffffff',
+        borderColor: '#add8e6',
+        inputBackgroundColor: '#ffffff',
 
         inputContainer: '#ECECEC',
         placeholder: '#eaeaea',
@@ -24,6 +26,8 @@ const Themes = {
         background2: '#414141',
         header: '#30475E',
         headerText: '#DDDDDD',
+        borderColor: '#B4B4B4',
+        inputBackgroundColor: '#414141',
 
         inputContainer: '#414141',
         placeholder: '#4D4D4D',

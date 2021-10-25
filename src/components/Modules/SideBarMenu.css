@@ -1,0 +1,47 @@
+button{
+    background-color: transparent;
+    border: none;
+    font-size: 1.5em;
+    color: white;
+    padding: 5px;
+    margin: 5px;
+}
+
+
+.sidebar-content{
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    left: -100%;
+    transition: 850ms;
+
+}
+
+.sidebar-content.active{
+    left: 0;
+}
+
+.sideBarList{
+    text-align: left;
+    font-size: 1.5rem;
+    list-style-type: none;
+    padding: 0px;
+}
+
+.sideBarList li{
+    margin: 15px 0;
+
+}
+
+.sideBarList a{
+    text-decoration: none;
+    color: white
+}
+
+.sideBarList a:hover{
+    color:lightblue
+}

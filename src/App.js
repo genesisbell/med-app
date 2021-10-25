@@ -4,14 +4,19 @@ import React, {
     useReducer,
     useState,
 } from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 
 //Pages
 import BilliPage from './components/PagesComponents/BilliPage';
+import MenuPage from './components/PagesComponents/MenuPage';
 
 //Modules Components
 import Header from './components/Modules/Header';
-
-
 
 //Library Componets
 import Themes from './components/LibraryComponents/Colors';
@@ -51,15 +56,18 @@ export default function App(){
     /* End Theme Management */
 
 
-
-
-
     return(
         <ThemeContext.Provider value={{themeContext, theme}}>
-            <div>
-                <Header/>
-                <BilliPage/>
-            </div>
+            <Router>
+                <Switch>
+                    <Route path="/billi">
+                        <BilliPage />
+                    </Route>
+                    <Route path="/">
+                        <MenuPage />
+                    </Route>
+                </Switch>
+            </Router>
         </ThemeContext.Provider>
     )
 }

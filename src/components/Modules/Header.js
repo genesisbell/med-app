@@ -1,57 +1,48 @@
 import React, {
     useContext,
-    useState,
 } from 'react';
 
+//Modules
+import SideBarMenu from './SideBarMenu';
+
 //Custom Components
-import Switch from '../CustomComponents/BasicComponents/Switch';
 import Svg from '../CustomComponents/BasicComponents/Svg';
 
 //Libraries
-import Themes from '../LibraryComponents/Colors';
 import Icons from '../LibraryComponents/Icons';
 
 //Context
 import { ThemeContext } from '../Context';
 
-export default function Header(){
+export default function Header({title}){
 
-    const {themeContext, theme} = useContext(ThemeContext);
-
-    const [isThemeLight, setIsThemeLight] = useState(true);
-
-    function changeTheme(){
-
-        setIsThemeLight(prevState => !prevState);
-        const changedTheme = isThemeLight ? Themes.darkTheme : Themes.lightTheme;
-        const changedThemeString = isThemeLight ? 'darkTheme' : 'lightTheme';
-        themeContext.setTheme(changedTheme, changedThemeString);
-    }
+    const {theme} = useContext(ThemeContext);
 
     const styles = {
         headerContainer: {
-            alignItems: 'center',
             backgroundColor: theme.header,
+            alignItems: 'center',
             display: 'flex',
             flexDirection: 'row',
-            justifyContent: 'space-between',
+            justifyContent: 'center',
             padding: '1%',
+            paddingLeft: 0,
             textAlign: 'center',
         },
         header:{
             color: theme.headerText,
+            alignSelf: 'center'
             
         },
     }
 
     return(
         <div style={styles.headerContainer}>
-            <Svg xml={Icons.logo(50,50)}/>
-            <h1 style={styles.header}>Calculadora Hiperbilirrubinemia</h1>
-            <Switch 
-                onToggle={changeTheme}
-                value={isThemeLight}
-            />
+            {/**
+                <SideBarMenu/>
+                <Svg xml={Icons.logo(50,50)}/>
+            */}
+            <h1 style={styles.header}>{title}</h1>
         </div>
     );
 }

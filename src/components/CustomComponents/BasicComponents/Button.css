@@ -1,18 +1,20 @@
 .buttonContainer{
-    display: block;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .button {
     border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px 0 rgba(0,0,0,0.2), 0 2px 16px 0 rgba(0,0,0,0.19);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    height: auto;
+    margin: 4px 2px;
+    min-width: 200px;
     padding: 20px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px 0 rgba(0,0,0,0.2), 0 2px 16px 0 rgba(0,0,0,0.19);
 }

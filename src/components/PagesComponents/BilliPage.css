@@ -1,20 +1,26 @@
+input[type=radio]{
+    margin: 0;
+}
+
 .formBilli{
     display: grid;
     grid-template-columns: auto;
-    grid-column-gap: 100px;
+    grid-column-gap: 10px;
     padding: 1%;
     align-items: center;
+    justify-content: center;
 }
 
 .formItem{
+    display: inline-flex;
+    font-size: 1.2rem;
     padding: 5px;
-    font-size: 20px;
     text-align: end;
 }
 
-label{
+.formItem label{
     float: left;
-    width: 200px;
+    width: 100%;
     margin-right: 10px;
 }
 
@@ -22,52 +28,15 @@ input, select{
     float: left;
 }
 
-.btn{
-    width: 100px;
+.radioButtons{
+    width: 70%;
 }
 
+.radioButtons label{
+    width: auto;
+    margin-left: 10px;
+}
 
-/* select {
-    -webkit-appearance:none;
-    -moz-appearance:none;
-    -ms-appearance:none;
-    appearance:none;
-    outline:0;
-    box-shadow:none;
-    border:0!important;
-    background: #5c6664;
-    background-image: none;
-    flex: 1;
-    padding: 0 .5em;
-    color:#fff;
-    cursor:pointer;
-    font-size: 1em;
-    font-family: 'Open Sans', sans-serif;
- }
- select::-ms-expand {
-    display: none;
- }
- .select {
-    position: relative;
-    display: flex;
-    width: 20em;
-    height: 3em;
-    line-height: 3;
-    background: #5c6664;
-    overflow: hidden;
-    border-radius: .25em;
- }
- .select::after {
-    content: '\25BC';
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0 1em;
-    background: #2b2e2e;
-    cursor:pointer;
-    pointer-events:none;
-    transition:.25s all ease;
- }
- .select:hover::after {
-    color: #23b499;
- } */
+.radioButtons input[type=radio]{
+    margin-left: 10px;
+}
