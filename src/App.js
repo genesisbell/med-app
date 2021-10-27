@@ -64,7 +64,7 @@ export default function App(){
                         <BilliPage />
                     </Route>
                     <Route path="/">
-                        <MenuPage />
+                        <BilliPage />
                     </Route>
                 </Switch>
             </Router>
