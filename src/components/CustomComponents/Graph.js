@@ -1,6 +1,5 @@
-import React, {
-    useContext,
-} from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { 
     CartesianGrid,
     Legend,
@@ -13,9 +12,6 @@ import {
     YAxis,
 } from 'recharts';
 
-//Context
-import {ThemeContext} from '../Context';
-
 export default function Graph({chart, billiAxis}){
 
     function handleDotMouseOver(){
@@ -25,7 +21,7 @@ export default function Graph({chart, billiAxis}){
         )
     }
 
-    const { theme } = useContext(ThemeContext);
+    const theme = useSelector(({theme}) => theme.value);
 
     return(
         <div style={{ width: '90%', height: 400}}>

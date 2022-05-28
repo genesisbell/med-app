@@ -1,6 +1,5 @@
-import React, {
-    useContext,
-} from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 //Modules
 import SideBarMenu from './SideBarMenu';
@@ -11,12 +10,9 @@ import Svg from '../CustomComponents/BasicComponents/Svg';
 //Libraries
 import Icons from '../LibraryComponents/Icons';
 
-//Context
-import { ThemeContext } from '../Context';
-
 export default function Header({title}){
 
-    const {theme} = useContext(ThemeContext);
+    const theme = useSelector(({theme}) => theme.value);
 
     const styles = {
         headerContainer: {

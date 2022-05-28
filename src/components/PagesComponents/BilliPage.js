@@ -1,7 +1,7 @@
 import React, {
-    useContext,
     useState,
 } from 'react';
+import { useSelector } from 'react-redux';
 
 //Modules Components
 import Header from '../Modules/Header';
@@ -13,15 +13,12 @@ import Button from '../CustomComponents/BasicComponents/Button';
 //Data Libraries
 import billiGraphs from '../../DataLibraries/billiGraphs';
 
-//Context
-import { ThemeContext } from '../Context';
-
 //Styles
 import './BilliPage.css'
 
 export default function BilliPage(){
 
-    const { theme } = useContext(ThemeContext);
+    const theme = useSelector(({theme}) => theme.value);
 
     const currentDate = new Date();
     const day = currentDate.getDate() < 10 ? `0${currentDate.getDate()}` : currentDate.getDate();
@@ -138,7 +135,7 @@ export default function BilliPage(){
                             <label htmlFor="moles" style={{color: theme.text}}>µmol/L</label>
                         </div>
                         <div style={{display: 'flex', alignItems:'center', justifyContent: 'start'}}>
-                            <input type="radio" id="miligramos" name="unidad_medida" value="mg/dL" checked/>
+                            <input type="radio" id="miligramos" name="unidad_medida" value="mg/dL" defaultChecked/>
                             <label htmlFor="miligramos" style={{color: theme.text}}>mg/dL</label>
                         </div>
                     </div>

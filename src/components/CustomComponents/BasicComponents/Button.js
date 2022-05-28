@@ -1,17 +1,12 @@
-import React,{
-    useContext,
-    useState,
-} from 'react';
-
-//Context
-import { ThemeContext } from '../../Context';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 //Styles
 import './Button.css'
 
 export default function Button({title}){
 
-    const { theme } = useContext(ThemeContext);
+    const theme = useSelector(({theme}) => theme.value);
 
     return(
         <div className="buttonContainer">
