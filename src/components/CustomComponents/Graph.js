@@ -35,7 +35,7 @@ export default function Graph({chart, billiAxis}){
                         left: 0,
                         bottom: 0,
                 }}>
-                    <Legend verticalAlign="top" height={36}/>
+                    <Legend verticalAlign="top" height={'20%'}/>
                     <CartesianGrid stroke="#ccc" strokeDasharray="5 5"/>
                     <Line name="Fototerapia" type="monotone" dataKey="pt" stroke="blue" />
                     <Line name="Exanguinotransfusión" type="monotone" dataKey="et" stroke="red" />
@@ -44,8 +44,6 @@ export default function Graph({chart, billiAxis}){
                     <XAxis dataKey="daysFromBirth" type="number" tickCount={15} interval={0} stroke={theme.textLight}/>
                     <YAxis domain={[0, dataMax => '550']} allowDataOverflow={true} type="number" tickCount={13} interval={0} stroke={theme.textLight}/>
                     <YAxis yAxisId="right" orientation="right" domain={[0, dataMax => '32.15']} allowDataOverflow={true} type="number" tickCount={13} interval={0} stroke={theme.textLight}/>
-                    <Tooltip />
-                    
                 </LineChart>
             </ResponsiveContainer>
         </div>

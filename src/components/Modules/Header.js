@@ -16,14 +16,15 @@ export default function Header({title}){
 
     const styles = {
         headerContainer: {
-            backgroundColor: theme.header,
             alignItems: 'center',
+            backgroundColor: theme.header,
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'center',
-            padding: '1%',
+            padding: 30,
             paddingLeft: 0,
             textAlign: 'center',
+            //width: '100%',
         },
         header:{
             color: theme.headerText,
@@ -34,10 +35,10 @@ export default function Header({title}){
 
     return(
         <div style={styles.headerContainer}>
-            {/**
+            
                 <SideBarMenu/>
                 <Svg xml={Icons.logo(50,50)}/>
-            */}
+           
             <h1 style={styles.header}>{title}</h1>
         </div>
     );

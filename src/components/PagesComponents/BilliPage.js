@@ -142,7 +142,7 @@ export default function BilliPage(){
                 </div>
                 <br/>
                 <div className="formItem">
-                    <label style={{color: theme.text, alignSelf: 'center'}}>Fecha Nacimiento: </label>
+                    <label style={{color: theme.text, justifyContent: 'flex-end', alignItems: 'center', display: 'flex'}}>Fecha Nacimiento: </label>
                     <div style={{display: 'flex', flexDirection: 'column'}}>
                         <input 
                             id="dateBirth"

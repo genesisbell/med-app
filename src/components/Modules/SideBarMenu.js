@@ -5,6 +5,7 @@ import React, {
 import {
     Link
 } from "react-router-dom"
+import { useSelector } from 'react-redux';
 
 //Custom Components
 import Switch from '../CustomComponents/BasicComponents/Switch';
@@ -20,7 +21,8 @@ import './SideBarMenu.css';
 
 export default function SideBarMenu(){
 
-    const {themeContext, theme} = useContext(ThemeContext);
+    // const {themeContext, theme} = useContext(ThemeContext);
+    const theme = useSelector(({theme}) => theme.value);
     const [isSideBarOpen, setIsSideBarOpen] = useState(false);
     const [isThemeLight, setIsThemeLight] = useState(true);
 
@@ -36,18 +38,19 @@ export default function SideBarMenu(){
         setIsThemeLight(prevState => !prevState);
         const changedTheme = isThemeLight ? Themes.darkTheme : Themes.lightTheme;
         const changedThemeString = isThemeLight ? 'darkTheme' : 'lightTheme';
-        themeContext.setTheme(changedTheme, changedThemeString);
+        //themeContext.setTheme(changedTheme, changedThemeString);
     }
 
     const styles = {
         sideBarContainer:{
             backgroundColor: theme.header,
+            height: '100%', 
         }
 
     }
 
     return(
-        <div s>
+        <div>
             <button onClick={toggleSideBar}>
                 <i class="fas fa-bars"></i>
             </button>
