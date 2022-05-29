@@ -1,8 +1,5 @@
 import React, {
     useEffect,
-    useMemo,
-    useReducer,
-    useState,
 } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -12,8 +9,6 @@ import AppRouter from './AppRouter';
 export default function AppFirstLoad(){
 
     const theme = useSelector(({theme}) => theme.value);
-
-    console.log(theme, 'this is the theme')
 
 
     //const [theme, setTheme] = useState(Themes.lightTheme);

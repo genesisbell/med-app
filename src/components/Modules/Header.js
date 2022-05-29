@@ -36,8 +36,8 @@ export default function Header({title}){
     return(
         <div style={styles.headerContainer}>
             
-                <SideBarMenu/>
-                <Svg xml={Icons.logo(50,50)}/>
+                {/* <SideBarMenu/>
+                <Svg xml={Icons.logo(50,50)}/> */}
            
             <h1 style={styles.header}>{title}</h1>
         </div>

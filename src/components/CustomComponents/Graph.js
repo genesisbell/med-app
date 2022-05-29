@@ -12,7 +12,7 @@ import {
     YAxis,
 } from 'recharts';
 
-export default function Graph({chart, billiAxis}){
+export default function Graph({chart, billiAxis, info}){
 
     function handleDotMouseOver(){
         console.log('hoho')
@@ -26,6 +26,46 @@ export default function Graph({chart, billiAxis}){
     return(
         <div style={{ width: '90%', height: 400}}>
             <h3 style={{textAlign: 'center', color: theme.text}}>{chart.title} de gestación</h3>
+            {
+                info.billi && (
+                    <div style={{marginTop: 10, marginBottom: 10}}>
+                        <h4 style={{textAlign: 'center', color: theme.text}}>Días: {billiAxis.x.toFixed(2)}</h4>
+                        <h4 style={{textAlign: 'center', color: 'purple'}}>Billirubinemia: {info.billi}</h4>
+                        {
+                            info.graphValue && (
+                                <div>
+                                    <h4 style={{textAlign: 'center', color: 'blue'}}>Fototerapia: {info.graphValue.pt}</h4>
+                                    <h4 style={{textAlign: 'center', color: 'red'}}>Exanguinotransfusión: {info.graphValue.et}</h4>
+                                </div>
+                            )
+                        }
+                        {
+                            info.range && (
+                                <div style={{width: '100%', display: 'flex', flexDirection: 'row'}}>
+                                    <div style={{width: '50%'}}>
+                                        <div>
+                                            <h4 style={{textAlign: 'center', color: theme.text}}>Entre día {info.range.lowerRange.daysFromBirth}</h4>
+                                        </div>
+                                        <div>
+                                            <h4 style={{textAlign: 'center', color: 'blue'}}>Fototerapia: {info.range.lowerRange.pt}</h4>
+                                            <h4 style={{textAlign: 'center', color: 'red'}}>Exanguinotransfusión: {info.range.lowerRange.et}</h4>
+                                        </div>
+                                    </div>
+                                    <div style={{width: '50%'}}>
+                                        <div>
+                                            <h4 style={{textAlign: 'center', color: theme.text}}>y día {info.range.upperRange.daysFromBirth}</h4>
+                                        </div>
+                                        <div>
+                                            <h4 style={{textAlign: 'center', color: 'blue'}}>Fototerapia: {info.range.upperRange.pt}</h4>
+                                            <h4 style={{textAlign: 'center', color: 'red'}}>Exanguinotransfusión: {info.range.upperRange.et}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        }
+                    </div>
+                )
+            }
             <ResponsiveContainer>
                 <LineChart 
                     data={chart.data} 

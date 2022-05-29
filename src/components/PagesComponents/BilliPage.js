@@ -38,7 +38,12 @@ export default function BilliPage(){
     const [billiAxis, setBilliAxis] = useState({
         x:0,
         y:0,
-    })
+    });
+    const [info, setInfo] = useState({
+        graphValue: undefined,
+        range: undefined,
+        billi: undefined,
+    });
 
     function handleChange(event){
         const {name, value} = event.target;
@@ -82,6 +87,24 @@ export default function BilliPage(){
         const x = minutesFromBirth / 1440;
         const y = unidad_medida.value === 'mg/dL' ? billi.value * 17.104 : billi.value;
 
+        //Agarrar datos de la tabla para representarlos
+        let range = undefined;
+        let graphValue = undefined;
+        if(x % 1 === 0){
+            graphValue = graphData.data.find(gd => gd.daysFromBirth === x );
+        }else{
+            range =  {
+                lowerRange: graphData.data.find(gd => x > 1 ? gd.daysFromBirth > x - 1 : gd.daysFromBirth === 0 ),
+                upperRange: graphData.data.find(gd => gd.daysFromBirth > x),
+            }
+        }
+
+
+        setInfo({
+            range,
+            graphValue,
+            billi: billi.value,
+        });
 
         setBilliAxis({
             x,
@@ -189,7 +212,7 @@ export default function BilliPage(){
             </form>
 
             <div style={{display:'flex', justifyContent:'center', width: '100%'}}>
-                <Graph chart={graphData} billiAxis={billiAxis}/>
+                <Graph chart={graphData} billiAxis={billiAxis} info={info}/>
             </div>
 
         </div>
