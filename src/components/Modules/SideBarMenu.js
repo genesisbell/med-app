@@ -11,10 +11,11 @@ import { useSelector } from 'react-redux';
 import Switch from '../CustomComponents/BasicComponents/Switch';
 
 //Libraries
-import Themes from '../LibraryComponents/Colors';
+import {
+    darkTheme,
+    lightTheme,
+} from 'themes';
 
-//Context
-import { ThemeContext } from '../Context';
 
 //Styles
 import './SideBarMenu.css';
@@ -36,8 +37,8 @@ export default function SideBarMenu(){
     function changeTheme(){
 
         setIsThemeLight(prevState => !prevState);
-        const changedTheme = isThemeLight ? Themes.darkTheme : Themes.lightTheme;
-        const changedThemeString = isThemeLight ? 'darkTheme' : 'lightTheme';
+        // const changedTheme = isThemeLight ? darkTheme : lightTheme;
+        // const changedThemeString = isThemeLight ? 'darkTheme' : 'lightTheme';
         //themeContext.setTheme(changedTheme, changedThemeString);
     }
 

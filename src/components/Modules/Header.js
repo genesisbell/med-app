@@ -7,8 +7,6 @@ import SideBarMenu from './SideBarMenu';
 //Custom Components
 import Svg from '../CustomComponents/BasicComponents/Svg';
 
-//Libraries
-import Icons from '../LibraryComponents/Icons';
 
 export default function Header({title}){
 
