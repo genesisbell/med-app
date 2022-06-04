@@ -12,16 +12,21 @@ import {
     YAxis,
 } from 'recharts';
 
+const conversionToMg = 17.104
+
 export default function Graph({chart, billiAxis, info}){
 
     function handleDotMouseOver(){
-        console.log('hoho')
         return(
             <Tooltip coordinate={billiAxis}/>
         )
     }
 
     const theme = useSelector(({theme}) => theme.value);
+
+    function convertToMg(value){
+        return (value / conversionToMg).toFixed(2);
+    }
 
     return(
         <div style={{ width: '90%', height: 400}}>
@@ -34,8 +39,8 @@ export default function Graph({chart, billiAxis, info}){
                         {
                             info.graphValue && (
                                 <div>
-                                    <h4 style={{textAlign: 'center', color: 'blue'}}>Fototerapia: {info.graphValue.pt}</h4>
-                                    <h4 style={{textAlign: 'center', color: 'red'}}>Exanguinotransfusión: {info.graphValue.et}</h4>
+                                    <h4 style={{textAlign: 'center', color: 'blue'}}>Fototerapia: {convertToMg(info.graphValue.pt)}</h4>
+                                    <h4 style={{textAlign: 'center', color: 'red'}}>Exanguinotransfusión: {convertToMg(info.graphValue.et)}</h4>
                                 </div>
                             )
                         }
@@ -47,8 +52,8 @@ export default function Graph({chart, billiAxis, info}){
                                             <h4 style={{textAlign: 'center', color: theme.text}}>Entre día {info.range.lowerRange.daysFromBirth}</h4>
                                         </div>
                                         <div>
-                                            <h4 style={{textAlign: 'center', color: 'blue'}}>Fototerapia: {info.range.lowerRange.pt}</h4>
-                                            <h4 style={{textAlign: 'center', color: 'red'}}>Exanguinotransfusión: {info.range.lowerRange.et}</h4>
+                                            <h4 style={{textAlign: 'center', color: 'blue'}}>Fototerapia: {convertToMg(info.range.lowerRange.pt)}</h4>
+                                            <h4 style={{textAlign: 'center', color: 'red'}}>Exanguino: {convertToMg(info.range.lowerRange.pt)}</h4>
                                         </div>
                                     </div>
                                     <div style={{width: '50%'}}>
@@ -56,8 +61,8 @@ export default function Graph({chart, billiAxis, info}){
                                             <h4 style={{textAlign: 'center', color: theme.text}}>y día {info.range.upperRange.daysFromBirth}</h4>
                                         </div>
                                         <div>
-                                            <h4 style={{textAlign: 'center', color: 'blue'}}>Fototerapia: {info.range.upperRange.pt}</h4>
-                                            <h4 style={{textAlign: 'center', color: 'red'}}>Exanguinotransfusión: {info.range.upperRange.et}</h4>
+                                            <h4 style={{textAlign: 'center', color: 'blue'}}>Fototerapia: {convertToMg(info.range.upperRange.pt)}</h4>
+                                            <h4 style={{textAlign: 'center', color: 'red'}}>Exanguino: {convertToMg(info.range.upperRange.et)}</h4>
                                         </div>
                                     </div>
                                 </div>
